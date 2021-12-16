@@ -49,7 +49,7 @@ pipeline {
        }
 
        stage ('clean env and save artifact') {
-           agent any
+           agent { label 'agent-007' }
            environment{
                PASSWORD = credentials('dockerhub_password')
            }
@@ -70,7 +70,7 @@ pipeline {
             when {
                 expression { GIT_BRANCH == 'origin/master' }
             }
-            agent any
+            agent { label 'agent-007' }
             environment {
                 HEROKU_API_KEY = credentials('heroku_api_key')
             }  
