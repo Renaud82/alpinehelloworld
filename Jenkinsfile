@@ -15,7 +15,7 @@ pipeline {
     stages{
 
        stage ('Build Image'){
-           agent any
+           agent { label 'agent-007' }
            steps {
                script{
                    sh 'docker build -t $USERNAME/$IMAGE_NAME:$IMAGE_TAG .'
@@ -24,7 +24,7 @@ pipeline {
        }
 
        stage ('Run test container') {
-           agent any
+           agent { label 'agent-007' }
            steps {
                script{
                    sh '''
@@ -38,7 +38,7 @@ pipeline {
        }
 
        stage ('Test container') {
-           agent any
+           agent { label 'agent-007' }
            steps {
                script{
                    sh '''
